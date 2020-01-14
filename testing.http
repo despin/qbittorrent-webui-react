@@ -1,0 +1,14 @@
+@host = 127.0.0.1
+@port = 1234
+@fullhost = http://{{host}}:{{port}}
+@cookie = SID=v9VKHQ5cD042REqRSabB2PnUXxB0jzsn
+
+
+### Auth - Login
+GET {{fullhost}}/api/v2/auth/login?username=admin&password=admin01 HTTP/1.1
+Referer: {{fullhost}}
+User-Agent: react-webui
+
+### Torrents - Get list
+GET http://{{fullhost}}/api/v2/torrents/info
+Cookie: {{cookie}}
