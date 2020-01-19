@@ -1,13 +1,16 @@
-import Axios from "axios";
+import Axios from 'axios';
 
-const Api = {
-    cookie: "",
-    url: "http://localhost:1234",
-    getTorrentData: async () => {
-        await Axios.get()
+export const init = (
+    baseURL = 'http://192.168.0.12:1234/api/v2/',
+    timeout = 60000,
+  ) => {
+    Axios.defaults.baseURL = baseURL;
+    Axios.defaults.timeout = timeout;
+  };
 
-
-    }
+export const login = (user, pass) => {
+    const res = Axios.get(`/auth/login?username=${user}&password=${pass}`);
+    console.dir(res);
 };
 
 

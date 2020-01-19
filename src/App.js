@@ -19,6 +19,8 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles();
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   
 
   const [torrentData, setTorrentData] = useState({});
@@ -29,22 +31,25 @@ function App() {
   };
 
   const handleLogin = () => {
-
+    Api.login()
   };
 
   return (
     <Grid container>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <TextField id="username" label="Standard" />
-          <TextField id="password" label="Filled" />
+          <TextField id="username" label="Username" onChange={(event) => setUsername(event.target.value)} />
+          <TextField id="password" label="Password" onChange={(event) => setPassword(event.target.value)}/>
           <Button onClick={handleRefreshData()}>Refresh</Button>
           <Button onClick={handleLogin()}>Login</Button>
         </Paper>
       </Grid>
       <Hidden xsDown>
         <Grid item sm={4} md={3}>
-          <Paper className={classes.paper}>sideMenu</Paper>
+          <Paper className={classes.paper}>
+            user: {username};
+            pass: {password};
+          </Paper>
         </Grid>
       </Hidden>
       <Grid item xs={12} sm={8} md={9}>
